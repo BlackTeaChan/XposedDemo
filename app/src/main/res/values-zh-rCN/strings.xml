@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">XposedDemo</string>
+    <string name="save">保存</string>
+    <string name="time_watermark">时间水印</string>
+    <string name="module_not_activated">模块未激活</string>
+    <string name="restart_system">请重启系统</string>
+    <string name="res_hook_unavailable">资源钩子未启用</string>
+    <string name="flash_notice">通知闪光</string>
+    <string name="camera_watermark">相机水印</string>
+    <string name="title_activity_flash_notice">闪光通知</string>
+</resources>

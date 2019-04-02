@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200px"
+    android:layout_height="200px"
+    android:background="#fff">
+
+    <LinearLayout
+        android:id="@+id/float_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/float_btn1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#eee"
+            android:textColor="#ddd"
+            android:text="关"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

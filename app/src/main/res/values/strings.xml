@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">XposedDemo</string>
+    <string name="enter_custom_text">Please enter custom text</string>
+    <string name="save">Save</string>
+    <string name="time_watermark">Time watermark</string>
+    <string name="module_not_activated">Module is not activated</string>
+    <string name="restart_system">Please restart the system</string>
+    <string name="res_hook_unavailable">Resource hook is unavailable</string>
+    <string name="flash_notice">NoticeFlash</string>
+    <string name="camera_watermark">CameraWatermark</string>
+    <string name="title_activity_flash_notice">FlashNotice</string>
+</resources>
