@@ -76,7 +76,7 @@ public class Hook implements IXposedHookLoadPackage, IXposedHookInitPackageResou
     @Override
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
         //黑名单排除
-        if(!loadPackageParam.packageName.equals(flash_blackList[0])) {
+        if(false && !loadPackageParam.packageName.equals(flash_blackList[0])) {
             //拦截Notification
             Class clazz = loadPackageParam.classLoader.loadClass("android.app.NotificationManager");
             XposedHelpers.findAndHookMethod(clazz, "notify", String.class, int.class, Notification.class, new XC_MethodHook() {
@@ -280,6 +280,19 @@ public class Hook implements IXposedHookLoadPackage, IXposedHookInitPackageResou
 //                    param.args[0] = "TestText" + param.args[0].toString();
                 }
             });
+            //addView(Clock paramClock)
+            Class clazz8 = loadPackageParam.classLoader.loadClass("com.android.systemui.statusbar.policy.Clock$ReceiverInfo");
+            Class Clock = XposedHelpers.findClass("com.android.systemui.statusbar.policy.Clock",loadPackageParam.classLoader);
+            XposedHelpers.findAndHookMethod(clazz8, "addView", Clock, new XC_MethodHook() {
+                @Override
+                protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                    XposedBridge.log("SystemUI - addView(Clock paramClock)");
+                }
+                @Override
+                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                    XposedBridge.log("SystemUI - addView(Clock paramClock)");
+                }
+            });
             XposedHelpers.findAndHookMethod("com.android.systemui.statusbar.policy.Clock", loadPackageParam.classLoader, "updateClock", new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
@@ -353,7 +366,8 @@ public class Hook implements IXposedHookLoadPackage, IXposedHookInitPackageResou
 
                         TextView clock = (TextView) liparam.view.findViewById(liparam.res.getIdentifier("clock","id","com.android.systemui"));
                         clock.setGravity(Gravity.CENTER);
-//                        clock.setBackgroundColor(Color.RED);
+                        clock.setWidth(1080);
+                        clock.setBackgroundColor(Color.YELLOW);
 
                     }
                 }
@@ -366,7 +380,7 @@ public class Hook implements IXposedHookLoadPackage, IXposedHookInitPackageResou
                 @Override
                 public void handleLayoutInflated(LayoutInflatedParam layoutInflatedParam) throws Throwable {
                     TextView tv = (TextView)layoutInflatedParam.view.findViewById(layoutInflatedParam.res.getIdentifier("tv_active","id","com.BlackTeaChan.XposedDemo"));
-                    tv.setText("Resource hook is available-0.0.43");
+                    tv.setText("Resource hook is available-0.0.44");
                     tv.setTextColor(Color.GREEN);
                 }
             });
